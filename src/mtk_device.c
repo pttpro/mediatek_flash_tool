@@ -1,6 +1,10 @@
 #include "mtk_device.h"
 
+#ifdef __APPLE__
+#include <apple_endian.h>
+#else
 #include <endian.h>
+#endif
 #include <stdbool.h>
 #include <string.h>
 

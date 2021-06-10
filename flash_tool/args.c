@@ -142,7 +142,7 @@ static uint64_t parse_uint64_opt(int key, const char *str, const struct argp_sta
     if (isdigit(*str)) {
         char *endptr = NULL;
 
-        _Static_assert(ULLONG_MAX == UINT64_MAX, "unsigned long long is incompatible with uint64_t");
+        //_Static_assert(ULLONG_MAX == UINT64_MAX, "unsigned long long is incompatible with uint64_t");
 
         errno = 0;
         uint64_t value = strtoull(str, &endptr, 0);
