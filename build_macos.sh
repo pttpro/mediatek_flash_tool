@@ -1,7 +1,10 @@
 #!/bin/sh
 
-export CFLAGS="$CFLAGS -I/opt/homebrew/Cellar/argp-standalone/1.3/include/"
-export LDFLAGS="$LDFLAGS -L/opt/homebrew/Cellar/argp-standalone/1.3/lib/ -largp"
+ARG_PATH=$(brew --cellar argp-standalone)
+ARG_VERSION=$(brew list --versions argp-standalone | tr ' ' '\n' | tail -1)
+
+export CFLAGS="$CFLAGS -I$ARG_PATH/$ARG_VERSION/include/"
+export LDFLAGS="$LDFLAGS -L$ARG_PATH/$ARG_VERSION/lib/ -largp"
 
 if [ -d build ]; then
     rm -rf build
@@ -12,3 +15,9 @@ cd build
 
 meson ..
 ninja
+
+if [ $? -eq 0 ]; then
+  mv flash_tool/flash_tool /usr/local/bin
+  rm -rf ../build
+  echo "\nTo enable flash_tool on your current terminal, run:\n  \`source ~/.zshrc\`\n"
+fi
