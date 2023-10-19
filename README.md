@@ -8,6 +8,15 @@ dumping and flashing firmware.
  * Argp (included with glibc and gnulib) or argp-standalone
  * libusb >= 1.0.16
 
+## Installation
+
+#### macOS
+
+```
+brew install meson argp-standalone pkg-config cmake libusb
+./build_macos.sh
+```
+
 ## Limitations
 
  * Only tested on MT6580, with Download Agent from SP Flash Tool
